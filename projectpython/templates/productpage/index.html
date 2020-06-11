@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Product Details</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'register/style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="card">
+                <h4 class="card-header text-center">Add Product Details</h4>
+                <div class="card-block">
+                    <form method="post" action="/addproduct">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input name="product_name" type="text" class="form-control form-control-danger">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if "product_name" in message.tags %}
+                                        <div class="form-group has-danger">
+                                            <div class="form-control-feedback">{{ message }}</div>
+                                        </div>
+                                    {% endif %} {% endfor %} {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label>Product Weight</label>
+                            <input name="product_weight" type="number" class="form-control">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if "product_weight" in message.tags %}
+                                        <div class="form-group has-danger">
+                                            <div class="form-control-feedback">{{ message }}</div>
+                                        </div>
+                                    {% endif %} {% endfor %} {% endif %}
+                        </div>
+                        <div class="form-group">
+                            <label>Product Price</label>
+                            <input name="product_price" type="number" class="form-control">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if "product_price" in message.tags %}
+                                        <div class="form-group has-danger">
+                                            <div class="form-control-feedback">{{ message }}</div>
+                                        </div>
+                                    {% endif %} {% endfor %} {% endif %}
+                        </div>
+
+                        <div class="mx-auto text-center">
+                            <input type="submit" value="Add This Product" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>
